@@ -47,6 +47,10 @@ init([]) ->
     Web = {boss_web_controller,
 	   {boss_web_controller, start, [WebConfig]},
 	   permanent, 5000, worker, dynamic},
-
-    Processes = [Web],
+	
+	FSEvents = {freeswitch_events,
+	   {freeswitch_events, start, []},
+	   permanent, 5000, worker, dynamic},
+	
+    Processes = [FSEvents, Web],
     {ok, {{one_for_one, 10, 10}, Processes}}.

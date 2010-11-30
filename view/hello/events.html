@@ -1,0 +1,28 @@
+<html>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <head>
+
+    </head>
+    <body>
+	<a href="/hello/clear">Clear</a>
+	
+	<div id="name" style="float:right;lef200px">
+		{% if event %}
+			{% for k, v in event.data %}
+			{% if k == "Unique-ID" or k == "variable_uuid" or k == "Application" %}
+				<span style="color:red">
+			{% else %}
+				<span>
+			{% endif %}
+					{{k}}: {{v}}</span><br>
+			{% endfor %}
+		{% endif %}
+	</div>
+	<ul>
+	{% for event in events %}
+    	<li>
+			<a href="/hello/events/{{event.id}}">{{event.event_name}}</a>
+		</li>
+	{% endfor %}
+	</body>
+</html>
