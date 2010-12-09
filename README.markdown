@@ -7,11 +7,26 @@ To use this, you need build FreeSWITCH with mod\_erlang\_event
 	cd $(FreeSWITCH source dir)
 	make mod_erlang_event install
 
-It using the Chicago Boss framework, you just need to git clone the code and `make`.
+And load the mod in FreeSWITCH:
 
-Config freeswitch\_node in boss.conf.
+	fs_cli> load mod_erlang_event
 
-You also need to change the start script, see start\_seven.sh .
+Config freeswitch\_node in boss.config.
+
+It using the Chicago Boss framework, you just need to git clone the code and `make`(see below for more detail about Chicago Boss).
+
+You also need to change the start script, see start\_seven.sh for a sample.
+
+**Note**: It using the default fake db driver, so it's not persistent. See Chicago Boss documents if you want persistent store.
+
+See this link for more info:
+<http://www.dujinfang.com/past/2010/12/9/freeswitch-eventcool/>
+
+TODO
+--------
+
+* order by uuid
+* more fan...
 
 Getting Started With Chicago Boss
 =================================
