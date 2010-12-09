@@ -1,3 +1,18 @@
+What is FreeSWITCH EventCool?
+=================================
+FreeSWITCH EventCool is a simple tool to collect FreeSWITCH events via mod\_erlang\_event and display on a web page.
+
+To use this, you need build FreeSWITCH with mod\_erlang\_event
+
+	cd $(FreeSWITCH source dir)
+	make mod_erlang_event install
+
+It using the Chicago Boss framework, you just need to git clone the code and `make`.
+
+Config freeswitch\_node in boss.conf.
+
+You also need to change the start script, see start\_seven.sh .
+
 Getting Started With Chicago Boss
 =================================
 

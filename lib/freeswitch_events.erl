@@ -1,9 +1,18 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%--------------------------------------------------------------------
+%% The contents of this file are subject to the Mozilla Public License
+%% Version 1.1 (the "License"); you may not use this file except in
+%% compliance with the License. You may obtain a copy of the License at
+%% http://www.mozilla.org/MPL/
+%% 
+%% Software distributed under the License is distributed on an "AS IS"
+%% basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+%% License for the specific language governing rights and limitations
+%% under the License.
 %%
-%% @doc This module is used to receive events from FreeSWITCH
-%%  that are not directly tied to an interaction (for example registrations)
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% @author Seven Du <dujinfang .at. gmail.com>
+%% @copyright 2010 Seven Du
+%% @doc This module is used to receive and dispatch events from FreeSWITCH
+%%--------------------------------------------------------------------
 -module(freeswitch_events).
 
 -behaviour(gen_server).
@@ -27,8 +36,9 @@ handle_event(Event) -> gen_server:cast(?MODULE, {handle_event, Event}).
 start() ->
   gen_server:start_link({local, ?SERVER}, ?MODULE, [], []).
 
-%% 
-%% @doc Connect to freeswitch and register events.  Note that you have to do each 'CUSTOM' event seperately.
+%%--------------------------------------------------------------------
+%%% gen_server callbacks
+%%--------------------------------------------------------------------
 
 init([]) ->
 	{ok, Node} = application:get_env(boss, freeswitch_node),

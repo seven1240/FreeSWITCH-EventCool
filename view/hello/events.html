@@ -4,12 +4,13 @@
 
     </head>
     <body>
+	<a href="/">Home</a>
 	<a href="/hello/clear">Clear</a>
 	
-	<div id="name" style="float:right;lef200px">
+	<div id="name" style="float:right;width:600px;left:200px;word-wrap:break-word; break-word:break-all">
 		{% if event %}
 			{% for k, v in event.data %}
-			{% if k == "Unique-ID" or k == "variable_uuid" or k == "Application" %}
+			{% if k == "Unique-ID" or k == "variable_uuid" or k == "Application" or k == "Channel-State" %}
 				<span style="color:red">
 			{% else %}
 				<span>
@@ -22,6 +23,10 @@
 	{% for event in events %}
     	<li>
 			<a href="/hello/events/{{event.id}}">{{event.event_name}}</a>
+			{% if event.event_name == "CUSTOM" %}
+				{{event.subclass}} |
+			{% endif %}
+			{{event.uuid}}
 		</li>
 	{% endfor %}
 	</body>
